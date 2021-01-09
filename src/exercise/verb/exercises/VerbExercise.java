@@ -1,4 +1,6 @@
-package exercise.verb;
+package exercise.verb.exercises;
+
+import exercise.verb.ParolaTraduzione;
 
 import java.io.*;
 import java.util.*;
@@ -8,23 +10,15 @@ public class VerbExercise {
     private final Scanner scanner;
     private final Random random;
 
-    public VerbExercise(String filePath) {
+    public VerbExercise(String filePath, Scanner scanner) {
         file = new File(filePath);
-        scanner = new Scanner(System.in);
+        this.scanner = scanner;
         random = new Random();
     }
 
     public void run() {
-        String response = null;
-        do {
-            List<ParolaTraduzione> dictionary = generateDictionary();
-            playWithDictionary(dictionary);
-
-            System.out.println("Wanna play again? (Y/N)");
-            response = scanner.nextLine();
-        } while ("Y".equalsIgnoreCase(response));
-
-        scanner.close();
+        List<ParolaTraduzione> dictionary = generateDictionary();
+        playWithDictionary(dictionary);
     }
 
     private void playWithDictionary(List<ParolaTraduzione> dictionary) {
